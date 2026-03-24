@@ -8,6 +8,17 @@ use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets;
 use Illuminate\Http\Request;
 
+$storagePath = is_writable(dirname(__DIR__).'/storage')
+    ? dirname(__DIR__).'/storage'
+    : '/tmp/storage';
+
+if ($storagePath === '/tmp/storage') {
+    @mkdir('/tmp/storage/framework/views', 0755, true);
+    @mkdir('/tmp/storage/framework/cache/data', 0755, true);
+    @mkdir('/tmp/storage/framework/sessions', 0755, true);
+    @mkdir('/tmp/storage/logs', 0755, true);
+}
+
 $app = Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
@@ -35,14 +46,6 @@ $app = Application::configure(basePath: dirname(__DIR__))
         //
     })->create();
 
-if (isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL'])) {
-    $app->useStoragePath('/tmp/storage');
-    if (!is_dir('/tmp/storage/framework/views')) {
-        mkdir('/tmp/storage/framework/views', 0755, true);
-        mkdir('/tmp/storage/framework/cache/data', 0755, true);
-        mkdir('/tmp/storage/framework/sessions', 0755, true);
-        mkdir('/tmp/storage/logs', 0755, true);
-    }
-}
+$app->useStoragePath($storagePath);
 
 return $app;
