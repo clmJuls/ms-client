@@ -1,7 +1,7 @@
 export default function AppLogo() {
     return (
         <>
-            <div className="flex aspect-square size-8 items-center justify-center rounded-lg overflow-hidden">
+            <div className="flex aspect-square size-12 items-center justify-center rounded-lg overflow-hidden">
                 <img src="/logoMS.png" alt="Logo" className="size-full object-contain" />
             </div>
             <div className="ml-1 grid flex-1 text-left text-sm">

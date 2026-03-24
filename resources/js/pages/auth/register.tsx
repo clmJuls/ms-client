@@ -46,6 +46,23 @@ export default function Register() {
                             {({ processing, errors }) => (
                                 <>
                                     <div className="space-y-2">
+                                        <Label htmlFor="company_name" className="text-gray-200 font-medium">
+                                            Company Name
+                                        </Label>
+                                        <Input
+                                            id="company_name"
+                                            type="text"
+                                            name="company_name"
+                                            required
+                                            tabIndex={1}
+                                            autoComplete="organization"
+                                            placeholder="Your Company"
+                                            className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-purple-500 focus:ring-purple-500/50 h-11"
+                                        />
+                                        <InputError message={errors.company_name} />
+                                    </div>
+
+                                    <div className="space-y-2">
                                         <Label htmlFor="name" className="text-gray-200 font-medium">
                                             Full Name
                                         </Label>
@@ -55,7 +72,7 @@ export default function Register() {
                                             name="name"
                                             required
                                             autoFocus
-                                            tabIndex={1}
+                                            tabIndex={2}
                                             autoComplete="name"
                                             placeholder="John Doe"
                                             className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-purple-500 focus:ring-purple-500/50 h-11"
@@ -72,7 +89,7 @@ export default function Register() {
                                             type="email"
                                             name="email"
                                             required
-                                            tabIndex={2}
+                                            tabIndex={3}
                                             autoComplete="email"
                                             placeholder="you@example.com"
                                             className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-purple-500 focus:ring-purple-500/50 h-11"
@@ -89,7 +106,7 @@ export default function Register() {
                                             type="password"
                                             name="password"
                                             required
-                                            tabIndex={3}
+                                            tabIndex={4}
                                             autoComplete="new-password"
                                             placeholder="••••••••"
                                             className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-purple-500 focus:ring-purple-500/50 h-11"
@@ -106,7 +123,7 @@ export default function Register() {
                                             type="password"
                                             name="password_confirmation"
                                             required
-                                            tabIndex={4}
+                                            tabIndex={5}
                                             autoComplete="new-password"
                                             placeholder="••••••••"
                                             className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-purple-500 focus:ring-purple-500/50 h-11"
@@ -116,7 +133,7 @@ export default function Register() {
 
                                     <Button
                                         type="submit"
-                                        tabIndex={5}
+                                        tabIndex={6}
                                         data-test="register-user-button"
                                         className="w-full h-11 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200 mt-2"
                                     >
@@ -126,7 +143,7 @@ export default function Register() {
 
                                     <div className="text-center text-sm text-gray-300">
                                         Already have an account?{' '}
-                                        <TextLink href={login()} tabIndex={6} className="text-purple-300 hover:text-purple-200 font-semibold">
+                                        <TextLink href={login()} tabIndex={7} className="text-purple-300 hover:text-purple-200 font-semibold">
                                             Sign in
                                         </TextLink>
                                     </div>
